@@ -1,4 +1,23 @@
 <script setup>
+import { computed, reactive } from 'vue';
+
+const formData = reactive({
+    name: '',
+    price: '',
+    category: 'lanche',
+    available: true
+});
+
+const submitForm = computed(() => {
+    // Aqui você pode adicionar a lógica para enviar os dados do formulário para o backend
+    console.log('Dados do formulário:', formData);
+    alert('Item cadastrado com sucesso!');
+    // Limpar o formulário após o envio
+    formData.name = '';
+    formData.price = '';
+    formData.category = 'lanche';
+    formData.available = true;
+}) 
 </script>
 
 <template>
@@ -20,20 +39,22 @@
 
                     <div class="field-group">
                         <label class="form-label">Nome do Item</label>
-                        <input type="text" class="form-control custom-input" placeholder="Ex: X-Burguer" />
+                        <input type="text" class="form-control custom-input" placeholder="Ex: X-Burguer"
+                            v-model="formData.name" />
                     </div>
 
                     <div class="field-group">
                         <label class="form-label">Preço</label>
                         <div class="price-wrapper">
                             <span class="price-prefix">R$</span>
-                            <input type="number" class="form-control custom-input price-input" placeholder="0,00" />
+                            <input type="number" class="form-control custom-input price-input" placeholder="0,00"
+                                v-model="formData.price" />
                         </div>
                     </div>
 
                     <div class="field-group">
                         <label class="form-label">Categoria</label>
-                        <select class="form-select custom-input" name="category">
+                        <select class="form-select custom-input" name="category" v-model="formData.category">
                             <option value="lanche">🍔 Lanche</option>
                             <option value="bebida">🥤 Bebida</option>
                             <option value="sobremesa">🍨 Sobremesa</option>
@@ -47,12 +68,13 @@
                                 <span class="disponivel-hint">Item aparece no cardápio</span>
                             </div>
                             <div class="form-check form-switch mb-0">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" />
+                                <input class="form-check-input custom-switch" type="checkbox" role="switch"
+                                    v-model="formData.available" />
                             </div>
                         </div>
                     </div>
 
-                    <button class="btn btn-cadastrar w-100">
+                    <button class="btn btn-cadastrar w-100" @click="submitForm">
                         Cadastrar Item
                     </button>
 
