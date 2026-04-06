@@ -257,4 +257,71 @@
 .btn-cadastrar:active {
     transform: translateY(0);
 }
+
+/* Wrapper do ícone */
+.burger-icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    /* antes tava muito solto */
+}
+
+/* Ícone melhorado */
+.burger-icon {
+    font-size: 3.2rem;
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: radial-gradient(circle at top, #ffb347, #ff9a00);
+    border-radius: 50%;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.4),
+        inset 0 2px 8px rgba(255, 255, 255, 0.3);
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover suave */
+.burger-icon:hover {
+    transform: scale(1.08) rotate(-3deg);
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.5),
+        0 0 20px #ff9a0055;
+}
+
+.form-header {
+    background: linear-gradient(135deg, #c87600, #ff9a00);
+    padding: 2.5rem 2rem 2.2rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.6rem;
+    color: #1a0a00;
+    letter-spacing: 3px;
+    margin: 0;
+    line-height: 1;
+}
+
+.form-subtitle {
+    color: #1a0a00bb;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    font-weight: 600;
+
+    text-align: center;
+    max-width: 260px;
+    /* 🔥 evita ficar muito largo */
+}
 </style>
