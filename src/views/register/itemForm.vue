@@ -25,7 +25,7 @@
                         <label class="form-label">Preço</label>
                         <div class="price-wrapper">
                             <span class="price-prefix">R$</span>
-                            <input type="text" class="form-control custom-input price-input" placeholder="0,00" />
+                            <input type="number" class="form-control custom-input price-input" placeholder="0,00" />
                         </div>
                     </div>
 
