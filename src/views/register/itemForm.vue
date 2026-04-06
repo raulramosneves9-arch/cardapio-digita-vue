@@ -8,7 +8,9 @@
 
                 <!-- Header -->
                 <div class="form-header text-center mb-4">
-                    <div class="burger-icon mb-3">🍔</div>
+                    <div class="burger-icon-wrapper mb-3">
+                        <div class="burger-icon">🍔</div>
+                    </div>
                     <h1 class="form-title">Cadastrar Item</h1>
                     <p class="form-subtitle">Adicione um novo item ao cardápio</p>
                 </div>
