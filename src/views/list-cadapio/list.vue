@@ -80,11 +80,11 @@
    PAGE WRAPPER
    ================================ */
 .page-wrapper {
-    min-height: 100vh;
+    min-height: 50vh;
     background-color: #1a1008;
     background-image:
-        radial-gradient(ellipse at top left, #3d1f00 0%, transparent 50%),
-        radial-gradient(ellipse at bottom right, #2a0f00 0%, transparent 50%);
+        radial-gradient(ellipse at bottom left, #3d1f00 0%, transparent 50%),
+        radial-gradient(ellipse at top right, #2a0f00 0%, transparent 50%);
     display: flex;
     justify-content: center;
     font-family: 'Nunito', sans-serif;
