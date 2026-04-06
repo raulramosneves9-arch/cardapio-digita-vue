@@ -6,18 +6,22 @@ const formData = reactive({
     price: '',
     category: 'lanche',
     available: true
-});
+})
 
 const submitForm = computed(() => {
     // Aqui você pode adicionar a lógica para enviar os dados do formulário para o backend
     console.log('Dados do formulário:', formData);
     alert('Item cadastrado com sucesso!');
-    // Limpar o formulário após o envio
-    formData.name = '';
-    formData.price = '';
-    formData.category = 'lanche';
-    formData.available = true;
-}) 
+})
+
+// const vereficAvab = computed(() => {
+//     if (available.value === true) {
+//         return available.value = true
+//     }
+//     else {
+//         available = false
+//     }
+// })
 </script>
 
 <template>
