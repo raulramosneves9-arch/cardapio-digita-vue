@@ -73,52 +73,55 @@
     align-items: center;
     justify-content: center;
     font-family: 'Nunito', sans-serif;
+    padding: 1rem;
 }
 
+/* 🔥 CARD MAIS RESPONSIVO */
 .form-card {
     margin-top: 2rem;
     background: #1f1209;
     border: 1px solid #c8760033;
     border-radius: 24px;
     overflow: hidden;
-    max-width: 520px;
+
     width: 100%;
+    max-width: 900px;
+    /* antes era 520px */
+
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px #c8760011;
 }
 
+/* HEADER */
 .form-header {
     background: linear-gradient(135deg, #c87600, #ff9a00);
     padding: 2.5rem 2rem 2rem;
 }
 
-.burger-icon {
-    font-size: 3.5rem;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
-}
-
-.form-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.6rem;
-    color: #1a0a00;
-    letter-spacing: 3px;
-    margin: 0;
-    line-height: 1;
-}
-
-.form-subtitle {
-    color: #1a0a00bb;
-    font-size: 0.9rem;
-    margin: 0.4rem 0 0;
-    font-weight: 600;
-}
-
+/* BODY COM GRID */
 .form-body {
-    padding: 2.5rem 2.5rem 2rem;
-    display: flex;
-    flex-direction: column;
+    padding: 2.5rem;
+    display: grid;
     gap: 1.5rem;
 }
 
+/* 🔥 DESKTOP: CAMPOS LADO A LADO */
+@media (min-width: 768px) {
+    .form-body {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* ocupar linha inteira */
+    .field-group:nth-child(1),
+    .field-group:nth-child(3),
+    .field-group:nth-child(4),
+    .btn-cadastrar {
+        grid-column: span 2;
+    }
+}
+
+/* MOBILE continua padrão (empilhado) */
+
+/* INPUTS */
 .field-group {
     display: flex;
     flex-direction: column;
@@ -155,7 +158,7 @@
     outline: none;
 }
 
-/* Preço */
+/* PREÇO */
 .price-wrapper {
     position: relative;
     display: flex;
@@ -168,7 +171,6 @@
     color: #ff9a00;
     font-weight: 700;
     font-size: 0.95rem;
-    font-family: 'Nunito', sans-serif;
     pointer-events: none;
     z-index: 1;
 }
@@ -177,7 +179,7 @@
     padding-left: 3rem !important;
 }
 
-/* Disponível */
+/* DISPONÍVEL */
 .disponivel-row {
     background: #2a1a0855;
     border: 1.5px solid #c8760022;
@@ -220,6 +222,7 @@
     border-color: #ff9a00 !important;
 }
 
+/* BOTÃO */
 .btn-cadastrar {
     background: linear-gradient(135deg, #c87600, #ff9a00);
     color: #1a0a00;
