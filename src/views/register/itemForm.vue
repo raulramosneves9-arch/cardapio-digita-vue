@@ -50,17 +50,6 @@
                         </div>
                     </div>
 
-                    <div class="field-group">
-                        <div class="disponivel-row">
-                            <div class="disponivel-text">
-                                <span class="disponivel-label">Mostrar Cardapio</span>
-                            </div>
-                            <div class="form-check form-switch mb-0">
-                                <input class="form-check-input custom-switch" type="checkbox" role="switch" />
-                            </div>
-                        </div>
-                    </div>
-
                     <button class="btn btn-cadastrar w-100">
                         Cadastrar Item
                     </button>
@@ -87,6 +76,7 @@
 }
 
 .form-card {
+    margin-top: 2rem;
     background: #1f1209;
     border: 1px solid #c8760033;
     border-radius: 24px;
