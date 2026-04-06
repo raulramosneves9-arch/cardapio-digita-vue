@@ -107,13 +107,22 @@
 /* 🔥 DESKTOP: CAMPOS LADO A LADO */
 @media (min-width: 768px) {
     .form-body {
+        display: grid;
         grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
     }
 
-    /* ocupar linha inteira */
-    .field-group:nth-child(1),
-    .field-group:nth-child(3),
-    .field-group:nth-child(4),
+    /* Nome ocupa tudo */
+    .field-group:nth-child(1) {
+        grid-column: span 2;
+    }
+
+    /* Disponível ocupa tudo */
+    .field-group:nth-child(4) {
+        grid-column: span 2;
+    }
+
+    /* Botão ocupa tudo */
     .btn-cadastrar {
         grid-column: span 2;
     }
