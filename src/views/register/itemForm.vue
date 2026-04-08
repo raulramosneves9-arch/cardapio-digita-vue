@@ -8,6 +8,8 @@ const formData = reactive({
     available: true
 })
 
+// const categories = ["Todos", "Lanche", "Bebida", "Sobremesa"]
+
 const submitForm = computed(() => {
     // Aqui você pode adicionar a lógica para enviar os dados do formulário para o backend
     console.log('Dados do formulário:', formData);
