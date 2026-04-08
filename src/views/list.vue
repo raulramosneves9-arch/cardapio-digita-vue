@@ -20,10 +20,10 @@
             </header>
 
             <!-- ===== GRID DE CATEGORIAS ===== -->
-            <div class="menu-grid">
+            <section class="menu-grid">
 
                 <!-- ===== CATEGORIA: LANCHES ===== -->
-                <article class="card">
+                <article class="card" style="display: none;">
                     <header class="card-header">
                         <h2 class="category-title">🍔 Lanches</h2>
                     </header>
@@ -32,7 +32,7 @@
                 </article>
 
                 <!-- ===== CATEGORIA: BEBIDAS ===== -->
-                <article class="card">
+                <article class="card" style="display: none;">
                     <header class="card-header">
                         <h2 class="category-title">🥤 Bebidas</h2>
                     </header>
@@ -41,7 +41,7 @@
                 </article>
 
                 <!-- ===== CATEGORIA: SOBREMESAS ===== -->
-                <article class="card">
+                <article class="card" style="display: none;">
                     <header class="card-header">
                         <h2 class="category-title">🍰 Sobremesas</h2>
                     </header>
@@ -49,7 +49,7 @@
                     </ul>
                 </article>
 
-            </div>
+            </section>
             <!-- fim .menu-grid -->
 
         </main>

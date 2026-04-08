@@ -1,11 +1,12 @@
 <script setup>
-import { computed, reactive } from 'vue';
+import { computed, reactive, ref } from 'vue';
 
 const formData = reactive({
     name: '',
     price: '',
     category: '',
-    available: true
+    available: true,
+    id: ref(1)
 })
 
 // const categories = ["Todos", "Lanche", "Bebida", "Sobremesa"]
