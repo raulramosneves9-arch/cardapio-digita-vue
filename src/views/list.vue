@@ -17,6 +17,12 @@
                 <span class="page-icon" aria-hidden="true">🍔</span>
                 <h1 class="page-title">Cardápio</h1>
                 <p class="page-subtitle">Escolha o que você quer administrar</p>
+                <nav class="filter-nav">
+                    <button class="btn-filter active" @click="todos">Todos</button>
+                    <button class="btn-filter" @click="lanches">Lanches</button>
+                    <button class="btn-filter" @click="bebidas">Bebidas</button>
+                    <button class="btn-filter" @click="sobremesas">Sobremesas</button>
+                </nav>
             </header>
 
             <!-- ===== GRID DE CATEGORIAS ===== -->
@@ -89,6 +95,42 @@
 /* ================================
    TÍTULO DA PÁGINA
    ================================ */
+
+.filter-nav {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+/* ================================
+   BOTÕES DE FILTRO
+   ================================ */
+.btn-filter {
+    background: transparent;
+    border: 1px solid #c8760055;
+    border-radius: 999px;
+    color: #c87600;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 0.45rem 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.btn-filter:hover {
+    background: #c87600;
+    color: #1a0a00;
+    border-color: #c87600;
+}
+
+.btn-filter.active {
+    background: #ff9a00;
+    color: #1a0a00;
+    border-color: #ff9a00;
+}
+
 .page-header {
     text-align: center;
     display: flex;
