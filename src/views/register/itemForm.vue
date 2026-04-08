@@ -1,27 +1,7 @@
 <script setup>
-import { computed, reactive } from 'vue';
+import { category } from '@/data/category';
 
-const formData = reactive({
-    name: '',
-    price: '',
-    category: 'lanche',
-    available: true
-})
 
-const submitForm = computed(() => {
-    // Aqui você pode adicionar a lógica para enviar os dados do formulário para o backend
-    console.log('Dados do formulário:', formData);
-    alert('Item cadastrado com sucesso!');
-})
-
-// const vereficAvab = computed(() => {
-//     if (available.value === true) {
-//         return available.value = true
-//     }
-//     else {
-//         available = false
-//     }
-// })
 </script>
 
 <template>
