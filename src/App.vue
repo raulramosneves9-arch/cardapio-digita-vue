@@ -1,7 +1,6 @@
 <script>
 import RegisterItem from './views/register/itemForm.vue'
-import ListItem from './list.vue'
-
+import ListItem from './views/list.vue'
 export default {
   components: {
     RegisterItem,

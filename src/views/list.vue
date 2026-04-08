@@ -2,57 +2,57 @@
 
 </script>
 
+<script setup>
+
+</script>
+
 <template>
 
     <!-- ===== PAGE WRAPPER ===== -->
     <div class="page-wrapper">
-        <div class="page-inner">
+        <main class="page-inner">
 
             <!-- ===== TÍTULO DA PÁGINA ===== -->
-            <div class="page-header">
-                <span class="page-icon">🍔</span>
+            <header class="page-header">
+                <span class="page-icon" aria-hidden="true">🍔</span>
                 <h1 class="page-title">Cardápio</h1>
-                <p class="page-subtitle">Escolha o que você quer pedir</p>
-            </div>
+                <p class="page-subtitle">Escolha o que você quer administrar</p>
+            </header>
 
             <!-- ===== GRID DE CATEGORIAS ===== -->
             <div class="menu-grid">
 
                 <!-- ===== CATEGORIA: LANCHES ===== -->
-                <div class="card">
-                    <div class="card-header">
-                        <span class="category-title">🍔 Lanches</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="item-card"><span class="item"></span><button class="item-arrow">></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <article class="card">
+                    <header class="card-header">
+                        <h2 class="category-title">🍔 Lanches</h2>
+                    </header>
+                    <ul class="card-body">
+                    </ul>
+                </article>
 
-            <!-- ===== CATEGORIA: BEBIDAS ===== -->
-            <div class="card">
-                <div class="card-header">
-                    <span class="category-title">🥤 Bebidas</span>
-                </div>
-                <div class="card-body">
-                    <div class="item-card"><span class="item">Refrigerante</span><span class="item-arrow">›</span>
-                    </div>
-                </div>
-            </div>
+                <!-- ===== CATEGORIA: BEBIDAS ===== -->
+                <article class="card">
+                    <header class="card-header">
+                        <h2 class="category-title">🥤 Bebidas</h2>
+                    </header>
+                    <ul class="card-body">
+                    </ul>
+                </article>
 
-            <!-- ===== CATEGORIA: SOBREMESAS ===== -->
-            <div class="card">
-                <div class="card-header">
-                    <span class="category-title">🍰 Sobremesas</span>
-                </div>
-                <div class="card-body">
-                    <div class="item-card"><span class="item">Sorvete</span><span class="item-arrow">›</span></div>
-                </div>
-            </div>
+                <!-- ===== CATEGORIA: SOBREMESAS ===== -->
+                <article class="card">
+                    <header class="card-header">
+                        <h2 class="category-title">🍰 Sobremesas</h2>
+                    </header>
+                    <ul class="card-body">
+                    </ul>
+                </article>
 
-        </div>
-        <!-- fim .menu-grid -->
+            </div>
+            <!-- fim .menu-grid -->
+
+        </main>
     </div>
 
 </template>
@@ -156,7 +156,6 @@
 .card-header {
     background: linear-gradient(135deg, #c87600, #ff9a00);
     padding: 1rem 1.5rem;
-    border-bottom: none;
 }
 
 .category-title {
@@ -164,13 +163,16 @@
     font-size: 1.4rem;
     color: #1a0a00;
     letter-spacing: 2px;
+    margin: 0;
 }
 
 /* ================================
-   BODY DO CARD (ITENS)
+   BODY DO CARD (LISTA DE ITENS)
    ================================ */
 .card-body {
     padding: 0.75rem 0;
+    margin: 0;
+    list-style: none;
 }
 
 /* ================================
