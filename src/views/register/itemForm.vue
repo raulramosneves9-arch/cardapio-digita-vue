@@ -51,6 +51,7 @@ const submitForm = () => {
                     <div class="field-group">
                         <label class="form-label">Categoria</label>
                         <select class="form-select custom-input" name="category" v-model="formData.category">
+                            <option value="" disabled>Selecione uma categoria</option>
                             <option value="lanche">🍔 Lanche</option>
                             <option value="bebida">🥤 Bebida</option>
                             <option value="sobremesa">🍨 Sobremesa</option>
