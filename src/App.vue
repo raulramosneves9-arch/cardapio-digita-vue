@@ -1,16 +1,21 @@
 <script>
 import RegisterItem from './views/register/itemForm.vue'
 import ListItem from './views/list.vue'
+import createCard from './views/register/createCard.vue';
+
 export default {
   components: {
     RegisterItem,
-    ListItem
+    createCard,
+    ListItem,
+
   }
 }
 </script>
 
 <template>
   <RegisterItem />
+  <createCard />
   <ListItem />
 </template>
 
