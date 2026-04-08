@@ -1,6 +1,6 @@
 <script>
 import RegisterItem from './views/register/itemForm.vue'
-import ListItem from './views/list-cadapio/list.vue'
+import ListItem from './list.vue'
 
 export default {
   components: {
