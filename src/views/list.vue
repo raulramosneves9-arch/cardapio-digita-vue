@@ -20,13 +20,14 @@ const mostrarSobremesas = computed(() => filtroAtivo.value === 'todos' || filtro
                 <h1 class="page-title">Cardápio</h1>
                 <p class="page-subtitle">Escolha o que você quer administrar</p>
                 <nav class="filter-nav">
-                    <button :class="['btn-filter', { active: filtroAtivo === 'todos' }]" @click="todos">Todos</button>
+                    <button :class="['btn-filter', { active: filtroAtivo === 'todos' }]"
+                        @click="filtroAtivo = 'todos'">Todos</button>
                     <button :class="['btn-filter', { active: filtroAtivo === 'lanches' }]"
-                        @click="lanches">Lanches</button>
+                        @click="filtroAtivo = 'lanches'">Lanches</button>
                     <button :class="['btn-filter', { active: filtroAtivo === 'bebidas' }]"
-                        @click="bebidas">Bebidas</button>
+                        @click="filtroAtivo = 'bebidas'">Bebidas</button>
                     <button :class="['btn-filter', { active: filtroAtivo === 'sobremesas' }]"
-                        @click="sobremesas">Sobremesas</button>
+                        @click="filtroAtivo = 'sobremesas'">Sobremesas</button>
                 </nav>
             </header>
 
@@ -34,7 +35,7 @@ const mostrarSobremesas = computed(() => filtroAtivo.value === 'todos' || filtro
             <section class="menu-grid">
 
                 <!-- ===== CATEGORIA: LANCHES ===== -->
-                <article class="card" v-show="filtroAtivo === 'todos' || filtroAtivo === 'lanches'">
+                <article class="card" v-show="mostrarLanches">
                     <header class="card-header">
                         <h2 class="category-title">🍔 Lanches</h2>
                     </header>
@@ -42,8 +43,7 @@ const mostrarSobremesas = computed(() => filtroAtivo.value === 'todos' || filtro
                     </ul>
                 </article>
 
-                <!-- ===== CATEGORIA: BEBIDAS ===== -->
-                <article class="card" v-show="filtroAtivo === 'todos' || filtroAtivo === 'bebidas'">
+                <article class="card" v-show="mostrarBebidas">
                     <header class="card-header">
                         <h2 class="category-title">🥤 Bebidas</h2>
                     </header>
@@ -51,8 +51,7 @@ const mostrarSobremesas = computed(() => filtroAtivo.value === 'todos' || filtro
                     </ul>
                 </article>
 
-                <!-- ===== CATEGORIA: SOBREMESAS ===== -->
-                <article class="card" v-show="filtroAtivo === 'todos' || filtroAtivo === 'sobremesas'">
+                <article class="card" v-show="mostrarSobremesas">
                     <header class="card-header">
                         <h2 class="category-title">🍰 Sobremesas</h2>
                     </header>
