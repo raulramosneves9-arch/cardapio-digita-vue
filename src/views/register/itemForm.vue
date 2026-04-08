@@ -1,5 +1,18 @@
 <script setup>
-import { category } from '@/data/category';
+import { computed, reactive } from 'vue';
+
+const formData = reactive({
+    name: '',
+    price: '',
+    category: '',
+    available: true
+})
+
+const submitForm = computed(() => {
+    // Aqui você pode adicionar a lógica para enviar os dados do formulário para o backend
+    console.log('Dados do formulário:', formData);
+    alert('Item cadastrado com sucesso!');
+})
 
 
 </script>
