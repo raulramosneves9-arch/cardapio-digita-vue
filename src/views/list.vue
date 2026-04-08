@@ -24,8 +24,7 @@
                         <span class="category-title">🍔 Lanches</span>
                     </div>
                     <div class="card-body">
-                        <div class="item-card"><span class="item">{{ name }}</span><button class="item-arrow"
-                                @click="showClick">›</button>
+                        <div class="item-card"><span class="item"></span><button class="item-arrow">></button>
                         </div>
                     </div>
                 </div>
@@ -39,11 +38,6 @@
                 <div class="card-body">
                     <div class="item-card"><span class="item">Refrigerante</span><span class="item-arrow">›</span>
                     </div>
-                    <div class="item-card"><span class="item">Suco natural</span><span class="item-arrow">›</span>
-                    </div>
-                    <div class="item-card"><span class="item">Água</span><span class="item-arrow">›</span></div>
-                    <div class="item-card"><span class="item">Milk-shake</span><span class="item-arrow">›</span>
-                    </div>
                 </div>
             </div>
 
@@ -54,16 +48,11 @@
                 </div>
                 <div class="card-body">
                     <div class="item-card"><span class="item">Sorvete</span><span class="item-arrow">›</span></div>
-                    <div class="item-card"><span class="item">Brownie</span><span class="item-arrow">›</span></div>
-                    <div class="item-card"><span class="item">Petit gateau</span><span class="item-arrow">›</span>
-                    </div>
                 </div>
             </div>
 
         </div>
         <!-- fim .menu-grid -->
-
-    </div>
     </div>
 
 </template>
