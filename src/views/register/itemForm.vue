@@ -1,7 +1,7 @@
 <script setup>
 import { reactive, ref } from 'vue';
 
-const formData = reactive({
+export const formData = reactive({
     name: '',
     price: '',
     category: '',
