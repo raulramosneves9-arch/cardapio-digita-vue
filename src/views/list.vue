@@ -1,9 +1,11 @@
 <script setup>
+import { computed, ref } from "vue"
 
-</script>
+const filtroAtivo = ref('todos')
 
-<script setup>
-
+const mostrarLanches = computed(() => filtroAtivo.value === 'todos' || filtroAtivo.value === 'lanches')
+const mostrarBebidas = computed(() => filtroAtivo.value === 'todos' || filtroAtivo.value === 'bebidas')
+const mostrarSobremesas = computed(() => filtroAtivo.value === 'todos' || filtroAtivo.value === 'sobremesas')
 </script>
 
 <template>
@@ -18,18 +20,21 @@
                 <h1 class="page-title">Cardápio</h1>
                 <p class="page-subtitle">Escolha o que você quer administrar</p>
                 <nav class="filter-nav">
-                    <button class="btn-filter active" @click="todos">Todos</button>
-                    <button class="btn-filter" @click="lanches">Lanches</button>
-                    <button class="btn-filter" @click="bebidas">Bebidas</button>
-                    <button class="btn-filter" @click="sobremesas">Sobremesas</button>
+                    <button :class="['btn-filter', { active: filtroAtivo === 'todos' }]" @click="todos">Todos</button>
+                    <button :class="['btn-filter', { active: filtroAtivo === 'lanches' }]"
+                        @click="lanches">Lanches</button>
+                    <button :class="['btn-filter', { active: filtroAtivo === 'bebidas' }]"
+                        @click="bebidas">Bebidas</button>
+                    <button :class="['btn-filter', { active: filtroAtivo === 'sobremesas' }]"
+                        @click="sobremesas">Sobremesas</button>
                 </nav>
             </header>
 
             <!-- ===== GRID DE CATEGORIAS ===== -->
-            <section style="display: none;" class="menu-grid">
+            <section class="menu-grid">
 
                 <!-- ===== CATEGORIA: LANCHES ===== -->
-                <article class="card" style="display: none;">
+                <article class="card" v-show="filtroAtivo === 'todos' || filtroAtivo === 'lanches'">
                     <header class="card-header">
                         <h2 class="category-title">🍔 Lanches</h2>
                     </header>
@@ -38,7 +43,7 @@
                 </article>
 
                 <!-- ===== CATEGORIA: BEBIDAS ===== -->
-                <article class="card" style="display: none;">
+                <article class="card" v-show="filtroAtivo === 'todos' || filtroAtivo === 'bebidas'">
                     <header class="card-header">
                         <h2 class="category-title">🥤 Bebidas</h2>
                     </header>
@@ -47,7 +52,7 @@
                 </article>
 
                 <!-- ===== CATEGORIA: SOBREMESAS ===== -->
-                <article class="card" style="display: none;">
+                <article class="card" v-show="filtroAtivo === 'todos' || filtroAtivo === 'sobremesas'">
                     <header class="card-header">
                         <h2 class="category-title">🍰 Sobremesas</h2>
                     </header>
