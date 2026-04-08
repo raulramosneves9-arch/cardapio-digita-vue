@@ -26,7 +26,7 @@
             </header>
 
             <!-- ===== GRID DE CATEGORIAS ===== -->
-            <section class="menu-grid">
+            <section style="display: none;" class="menu-grid">
 
                 <!-- ===== CATEGORIA: LANCHES ===== -->
                 <article class="card" style="display: none;">
