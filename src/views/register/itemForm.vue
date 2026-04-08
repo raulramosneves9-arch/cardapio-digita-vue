@@ -1,5 +1,5 @@
 <script setup>
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 
 const formData = reactive({
     name: '',
@@ -9,10 +9,12 @@ const formData = reactive({
     id: 1
 })
 
+const modalVisivel = ref(false)
+
 const submitForm = () => {
     formData.id++
     console.log('Dados do formulário:', formData)
-    alert('Item cadastrado com sucesso!')
+    modalVisivel.value = true
 }
 </script>
 
@@ -51,7 +53,7 @@ const submitForm = () => {
                     <div class="field-group">
                         <label class="form-label">Categoria</label>
                         <select class="form-select custom-input" name="category" v-model="formData.category">
-                            <option value="" disabled>Selecione uma categoria</option>
+                            <option value="" disabled class="placeholder-option">Selecione uma categoria</option>
                             <option value="lanche">🍔 Lanche</option>
                             <option value="bebida">🥤 Bebida</option>
                             <option value="sobremesa">🍨 Sobremesa</option>
@@ -78,6 +80,17 @@ const submitForm = () => {
                 </div>
             </div>
         </div>
+
+        <!-- ===== MODAL ===== -->
+        <div class="modal-overlay" v-show="modalVisivel" @click.self="modalVisivel = false">
+            <div class="modal-box">
+                <div class="modal-icon">✅</div>
+                <h2 class="modal-title">Item cadastrado!</h2>
+                <p class="modal-msg">O item foi adicionado ao cardápio com sucesso.</p>
+                <button class="btn btn-cadastrar" @click="modalVisivel = false">OK</button>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -97,35 +110,32 @@ const submitForm = () => {
     padding: 1rem;
 }
 
-/* 🔥 CARD MAIS RESPONSIVO */
 .form-card {
     margin-top: 2rem;
     background: #1f1209;
     border: 1px solid #c8760033;
     border-radius: 24px;
     overflow: hidden;
-
     width: 100%;
     max-width: 900px;
-    /* antes era 520px */
-
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px #c8760011;
 }
 
-/* HEADER */
 .form-header {
     background: linear-gradient(135deg, #c87600, #ff9a00);
-    padding: 2.5rem 2rem 2rem;
+    padding: 2.5rem 2rem 2.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-/* BODY COM GRID */
 .form-body {
     padding: 2.5rem;
     display: grid;
     gap: 1.5rem;
 }
 
-/* 🔥 DESKTOP: CAMPOS LADO A LADO */
 @media (min-width: 768px) {
     .form-body {
         display: grid;
@@ -133,25 +143,19 @@ const submitForm = () => {
         gap: 1.5rem;
     }
 
-    /* Nome ocupa tudo */
     .field-group:nth-child(1) {
         grid-column: span 2;
     }
 
-    /* Disponível ocupa tudo */
     .field-group:nth-child(4) {
         grid-column: span 2;
     }
 
-    /* Botão ocupa tudo */
     .btn-cadastrar {
         grid-column: span 2;
     }
 }
 
-/* MOBILE continua padrão (empilhado) */
-
-/* INPUTS */
 .field-group {
     display: flex;
     flex-direction: column;
@@ -188,7 +192,10 @@ const submitForm = () => {
     outline: none;
 }
 
-/* PREÇO */
+.placeholder-option {
+    color: #6a4a2a;
+}
+
 .price-wrapper {
     position: relative;
     display: flex;
@@ -209,7 +216,6 @@ const submitForm = () => {
     padding-left: 3rem !important;
 }
 
-/* DISPONÍVEL */
 .disponivel-row {
     background: #2a1a0855;
     border: 1.5px solid #c8760022;
@@ -252,7 +258,6 @@ const submitForm = () => {
     border-color: #ff9a00 !important;
 }
 
-/* BOTÃO */
 .btn-cadastrar {
     background: linear-gradient(135deg, #c87600, #ff9a00);
     color: #1a0a00;
@@ -277,51 +282,29 @@ const submitForm = () => {
     transform: translateY(0);
 }
 
-/* Wrapper do ícone */
 .burger-icon-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 1rem;
-    /* antes tava muito solto */
 }
 
-/* Ícone melhorado */
 .burger-icon {
     font-size: 3.2rem;
     width: 80px;
     height: 80px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background: radial-gradient(circle at top, #ffb347, #ff9a00);
     border-radius: 50%;
-
-    box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.4),
-        inset 0 2px 8px rgba(255, 255, 255, 0.3);
-
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), inset 0 2px 8px rgba(255, 255, 255, 0.3);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Hover suave */
 .burger-icon:hover {
     transform: scale(1.08) rotate(-3deg);
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.5),
-        0 0 20px #ff9a0055;
-}
-
-.form-header {
-    background: linear-gradient(135deg, #c87600, #ff9a00);
-    padding: 2.5rem 2rem 2.2rem;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px #ff9a0055;
 }
 
 .form-title {
@@ -338,9 +321,53 @@ const submitForm = () => {
     font-size: 0.9rem;
     margin-top: 0.5rem;
     font-weight: 600;
-
     text-align: center;
     max-width: 260px;
-    /* 🔥 evita ficar muito largo */
+}
+
+/* ===== MODAL ===== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: #00000099;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    backdrop-filter: blur(4px);
+}
+
+.modal-box {
+    background: #1f1209;
+    border: 1px solid #c8760033;
+    border-radius: 24px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    max-width: 360px;
+    width: 90%;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+}
+
+.modal-icon {
+    font-size: 3rem;
+}
+
+.modal-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: #ff9a00;
+    letter-spacing: 3px;
+    margin: 0;
+}
+
+.modal-msg {
+    color: #7a5a3a;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0;
 }
 </style>
