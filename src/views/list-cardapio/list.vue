@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue'
 
 const props = defineProps({ itens: Array })
+const emit = defineEmits(['deletarItem'])
 
 const filtroAtivo = ref('todos')
 
@@ -41,8 +42,11 @@ const mostrarSobremesas = computed(() => filtroAtivo.value === 'todos' || filtro
                     </header>
                     <ul class="card-body">
                         <li class="item-card" v-for="item in lanches" :key="item.id">
-                            <span class="item">{{ item.name }}</span>
-                            <span class="item-price">R$ {{ item.price }}</span>
+                            <div class="item-info">
+                                <span class="item-nome">{{ item.name }}</span>
+                                <span class="item-price">R$ {{ item.price }}</span>
+                            </div>
+                            <button class="btn-delete" @click="emit('deletarItem', item.id)">🗑️</button>
                         </li>
                         <li class="item-vazio" v-if="lanches.length === 0">Nenhum item cadastrado</li>
                     </ul>
@@ -54,8 +58,11 @@ const mostrarSobremesas = computed(() => filtroAtivo.value === 'todos' || filtro
                     </header>
                     <ul class="card-body">
                         <li class="item-card" v-for="item in bebidas" :key="item.id">
-                            <span class="item">{{ item.name }}</span>
-                            <span class="item-price">R$ {{ item.price }}</span>
+                            <div class="item-info">
+                                <span class="item-nome">{{ item.name }}</span>
+                                <span class="item-price">R$ {{ item.price }}</span>
+                            </div>
+                            <button class="btn-delete" @click="emit('deletarItem', item.id)">🗑️</button>
                         </li>
                         <li class="item-vazio" v-if="bebidas.length === 0">Nenhum item cadastrado</li>
                     </ul>
@@ -67,8 +74,11 @@ const mostrarSobremesas = computed(() => filtroAtivo.value === 'todos' || filtro
                     </header>
                     <ul class="card-body">
                         <li class="item-card" v-for="item in sobremesas" :key="item.id">
-                            <span class="item">{{ item.name }}</span>
-                            <span class="item-price">R$ {{ item.price }}</span>
+                            <div class="item-info">
+                                <span class="item-nome">{{ item.name }}</span>
+                                <span class="item-price">R$ {{ item.price }}</span>
+                            </div>
+                            <button class="btn-delete" @click="emit('deletarItem', item.id)">🗑️</button>
                         </li>
                         <li class="item-vazio" v-if="sobremesas.length === 0">Nenhum item cadastrado</li>
                     </ul>
@@ -78,15 +88,10 @@ const mostrarSobremesas = computed(() => filtroAtivo.value === 'todos' || filtro
         </main>
     </div>
 </template>
+
 <style scoped>
-/* ================================
-   IMPORTAÇÃO DE FONTES
-   ================================ */
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800&display=swap');
 
-/* ================================
-   PAGE WRAPPER
-   ================================ */
 .page-wrapper {
     min-height: 50vh;
     background-color: #1a1008;
@@ -107,32 +112,13 @@ const mostrarSobremesas = computed(() => filtroAtivo.value === 'todos' || filtro
     gap: 2.5rem;
 }
 
-.item-price {
-    color: #ff9a00;
-    font-weight: 700;
-    font-size: 0.9rem;
-}
-
-.item-vazio {
-    padding: 1rem 1.5rem;
-    color: #6a4a2a;
-    font-size: 0.85rem;
-    font-style: italic;
-}
-
-/* ================================
-   TÍTULO DA PÁGINA
-   ================================ */
-
 .filter-nav {
     display: flex;
     gap: 0.6rem;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
-/* ================================
-   BOTÕES DE FILTRO
-   ================================ */
 .btn-filter {
     background: transparent;
     border: 1px solid #c8760055;
@@ -190,18 +176,12 @@ const mostrarSobremesas = computed(() => filtroAtivo.value === 'todos' || filtro
     text-transform: uppercase;
 }
 
-/* ================================
-   GRID DE CATEGORIAS
-   ================================ */
 .menu-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 1.5rem;
 }
 
-/* ================================
-   CARD DE CATEGORIA
-   ================================ */
 .card {
     background: #1f1209;
     border: 1px solid #c8760033;
@@ -220,9 +200,6 @@ const mostrarSobremesas = computed(() => filtroAtivo.value === 'todos' || filtro
         0 0 0 1px #c8760033;
 }
 
-/* ================================
-   HEADER DO CARD (CATEGORIA)
-   ================================ */
 .card-header {
     background: linear-gradient(135deg, #c87600, #ff9a00);
     padding: 1rem 1.5rem;
@@ -236,56 +213,69 @@ const mostrarSobremesas = computed(() => filtroAtivo.value === 'todos' || filtro
     margin: 0;
 }
 
-/* ================================
-   BODY DO CARD (LISTA DE ITENS)
-   ================================ */
 .card-body {
-    padding: 0.75rem 0;
+    padding: 0.75rem;
     margin: 0;
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-/* ================================
-   ITEM INDIVIDUAL
-   ================================ */
 .item-card {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.75rem 1.5rem;
-    border-bottom: 1px solid #c8760011;
-    transition: background 0.15s;
-    cursor: pointer;
-}
-
-.item-card:last-child {
-    border-bottom: none;
+    padding: 0.75rem 1rem;
+    background: #2a1a08;
+    border: 1px solid #c8760022;
+    border-radius: 12px;
+    transition: background 0.15s, border-color 0.15s;
 }
 
 .item-card:hover {
-    background: #2a1a0866;
+    background: #3a2a10;
+    border-color: #c8760055;
 }
 
-.item-card:hover .item {
-    color: #ff9a00;
+.item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
 }
 
-.item-card:hover .item-arrow {
-    color: #ff9a00;
-    transform: translateX(4px);
-}
-
-.item {
+.item-nome {
     color: #f5deb3;
     font-size: 0.95rem;
-    font-weight: 600;
-    transition: color 0.15s;
+    font-weight: 700;
 }
 
-.item-arrow {
-    color: #6a4a2a;
-    font-size: 1.3rem;
+.item-price {
+    color: #ff9a00;
     font-weight: 700;
-    transition: color 0.15s, transform 0.15s;
+    font-size: 0.85rem;
+}
+
+.btn-delete {
+    background: transparent;
+    border: 1px solid #ff000033;
+    border-radius: 8px;
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-delete:hover {
+    background: #ff000033;
+    border-color: #ff000066;
+}
+
+.item-vazio {
+    padding: 1rem;
+    color: #6a4a2a;
+    font-size: 0.85rem;
+    font-style: italic;
+    text-align: center;
 }
 </style>

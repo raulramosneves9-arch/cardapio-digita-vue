@@ -9,9 +9,14 @@ function adicionarItem(item) {
     itens.value.push(item)
     localStorage.setItem('itens', JSON.stringify(itens.value))
 }
+
+function deletarItem(id) {
+    itens.value = itens.value.filter(i => i.id !== id)
+    localStorage.setItem('itens', JSON.stringify(itens.value))
+}
 </script>
 
 <template>
     <CreateCard @adicionarItem="adicionarItem" />
-    <ListItem :itens="itens" />
+    <ListItem :itens="itens" @deletarItem="deletarItem" />
 </template>
