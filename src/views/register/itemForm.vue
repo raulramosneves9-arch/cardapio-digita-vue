@@ -1,6 +1,8 @@
 <script setup>
 import { reactive, ref } from 'vue';
 
+const emit = defineEmits(['adicionarItem'])
+
 const formData = reactive({
     name: '',
     price: '',
@@ -9,17 +11,22 @@ const formData = reactive({
     id: 0
 })
 
-defineExpose({
-    formData
-})
-
 const modalVisivel = ref(false)
 
 const submitForm = () => {
+    if (!formData.name || !formData.price || !formData.category) return
+
     formData.id++
-    console.log('Dados do formulário:', formData)
+    emit('adicionarItem', { ...formData })
     modalVisivel.value = true
+
+    formData.name = ''
+    formData.price = ''
+    formData.category = ''
+    formData.available = true
 }
+
+defineExpose({ formData })
 </script>
 
 <template>
