@@ -1,18 +1,9 @@
-<script>
-import RegisterItem from './views/register/itemForm.vue'
-import ListItem from './views/list-cardapio/list.vue'
-
-export default {
-  components: {
-    RegisterItem,
-    ListItem,
-  }
-}
+<script setup>
+import Main from './views/main.vue'
 </script>
 
 <template>
-  <RegisterItem />
-  <ListItem />
+  <Main />
 </template>
 
 <style>
