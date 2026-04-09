@@ -1,12 +1,10 @@
 <script>
 import RegisterItem from './views/register/itemForm.vue'
-import CreateCard from './views/register/createCard.vue'
-import ListItem from './views/list.vue'
+import ListItem from './views/list-cardapio/list.vue'
 
 export default {
   components: {
     RegisterItem,
-    CreateCard,
     ListItem,
   }
 }
@@ -14,7 +12,6 @@ export default {
 
 <template>
   <RegisterItem />
-  <CreateCard />
   <ListItem />
 </template>
 

@@ -1,18 +1,18 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 import ItemForm from '../register/itemForm.vue'
 
+const emit = defineEmits(['adicionarItem'])
 const itemFormRef = ref(null)
 
-function showDados() {
+function salvar() {
     if (itemFormRef.value) {
-        console.log(itemFormRef.value.formData)
+        emit('adicionarItem', { ...itemFormRef.value.formData })
     }
 }
-
 </script>
 
 <template>
     <ItemForm ref="itemFormRef" />
-    <button @click="showDados">Ver Dados</button>
+    <button @click="salvar">Salvar</button>
 </template>
