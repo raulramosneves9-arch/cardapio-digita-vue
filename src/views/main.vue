@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import CreateCard from './register/createCard.vue'
 import ListItem from './list-cardapio/list.vue'
+import InfItem from '../views/infoItem/infItem.vue'
 
 const itens = ref(JSON.parse(localStorage.getItem('itens') || '[]'))
 
@@ -18,5 +19,8 @@ function deletarItem(id) {
 
 <template>
     <CreateCard @adicionarItem="adicionarItem" />
+
+    <InfItem :itens="itens" />
+
     <ListItem :itens="itens" @deletarItem="deletarItem" />
 </template>
