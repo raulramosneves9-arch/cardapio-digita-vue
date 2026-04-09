@@ -1,4 +1,10 @@
 <script setup>
+import { computed } from 'vue'
+
+const props = defineProps({
+    itens: Array
+})
+
 const totalItens = computed(() => props.itens.length)
 
 const mediaPreco = computed(() => {
@@ -7,8 +13,10 @@ const mediaPreco = computed(() => {
     return (soma / props.itens.length).toFixed(2)
 })
 
-const disponiveis = computed(() => props.itens.filter(i => i.available).length)</script>
-
+const disponiveis = computed(() =>
+    props.itens.filter(i => i.available).length
+)
+</script>
 <template>
     <div class="stats-box">
         <div class="stat">
@@ -36,8 +44,6 @@ const disponiveis = computed(() => props.itens.filter(i => i.available).length)<
     gap: 12px;
 
     background: linear-gradient(145deg, #1a0f05, #241407);
-    border: 1px solid #c8760022;
-    border-radius: 16px;
     padding: 0.9rem;
 
     box-shadow:
