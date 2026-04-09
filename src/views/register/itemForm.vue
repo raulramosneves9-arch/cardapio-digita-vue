@@ -1,12 +1,12 @@
 <script setup>
 import { reactive, ref } from 'vue';
 
-export const formData = reactive({
+const formData = reactive({
     name: '',
     price: '',
     category: '',
     available: true,
-    id: 1
+    id: 0
 })
 
 const modalVisivel = ref(false)

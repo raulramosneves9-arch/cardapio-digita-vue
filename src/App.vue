@@ -1,12 +1,10 @@
 <script>
 import RegisterItem from './views/register/itemForm.vue'
 import ListItem from './views/list.vue'
-import createCard from './views/register/createCard.vue';
 
 export default {
   components: {
     RegisterItem,
-    createCard,
     ListItem,
 
   }
@@ -15,7 +13,6 @@ export default {
 
 <template>
   <RegisterItem />
-  <createCard />
   <ListItem />
 </template>
 
