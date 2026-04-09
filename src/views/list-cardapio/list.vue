@@ -1,7 +1,13 @@
 <script setup>
-import { computed, ref } from "vue"
+import { computed, ref } from 'vue'
+
+const props = defineProps({ itens: Array })
 
 const filtroAtivo = ref('todos')
+
+const lanches = computed(() => props.itens.filter(i => i.category === 'lanche' && i.available))
+const bebidas = computed(() => props.itens.filter(i => i.category === 'bebida' && i.available))
+const sobremesas = computed(() => props.itens.filter(i => i.category === 'sobremesa' && i.available))
 
 const mostrarLanches = computed(() => filtroAtivo.value === 'todos' || filtroAtivo.value === 'lanches')
 const mostrarBebidas = computed(() => filtroAtivo.value === 'todos' || filtroAtivo.value === 'bebidas')
@@ -9,14 +15,10 @@ const mostrarSobremesas = computed(() => filtroAtivo.value === 'todos' || filtro
 </script>
 
 <template>
-
-    <!-- ===== PAGE WRAPPER ===== -->
     <div class="page-wrapper">
         <main class="page-inner">
-
-            <!-- ===== TÍTULO DA PÁGINA ===== -->
             <header class="page-header">
-                <span class="page-icon" aria-hidden="true">🍔</span>
+                <span class="page-icon">🍔</span>
                 <h1 class="page-title">Cardápio</h1>
                 <p class="page-subtitle">Escolha o que você quer administrar</p>
                 <nav class="filter-nav">
@@ -31,15 +33,18 @@ const mostrarSobremesas = computed(() => filtroAtivo.value === 'todos' || filtro
                 </nav>
             </header>
 
-            <!-- ===== GRID DE CATEGORIAS ===== -->
             <section class="menu-grid">
 
-                <!-- ===== CATEGORIA: LANCHES ===== -->
                 <article class="card" v-show="mostrarLanches">
                     <header class="card-header">
                         <h2 class="category-title">🍔 Lanches</h2>
                     </header>
                     <ul class="card-body">
+                        <li class="item-card" v-for="item in lanches" :key="item.id">
+                            <span class="item">{{ item.name }}</span>
+                            <span class="item-price">R$ {{ item.price }}</span>
+                        </li>
+                        <li class="item-vazio" v-if="lanches.length === 0">Nenhum item cadastrado</li>
                     </ul>
                 </article>
 
@@ -48,6 +53,11 @@ const mostrarSobremesas = computed(() => filtroAtivo.value === 'todos' || filtro
                         <h2 class="category-title">🥤 Bebidas</h2>
                     </header>
                     <ul class="card-body">
+                        <li class="item-card" v-for="item in bebidas" :key="item.id">
+                            <span class="item">{{ item.name }}</span>
+                            <span class="item-price">R$ {{ item.price }}</span>
+                        </li>
+                        <li class="item-vazio" v-if="bebidas.length === 0">Nenhum item cadastrado</li>
                     </ul>
                 </article>
 
@@ -56,17 +66,18 @@ const mostrarSobremesas = computed(() => filtroAtivo.value === 'todos' || filtro
                         <h2 class="category-title">🍰 Sobremesas</h2>
                     </header>
                     <ul class="card-body">
+                        <li class="item-card" v-for="item in sobremesas" :key="item.id">
+                            <span class="item">{{ item.name }}</span>
+                            <span class="item-price">R$ {{ item.price }}</span>
+                        </li>
+                        <li class="item-vazio" v-if="sobremesas.length === 0">Nenhum item cadastrado</li>
                     </ul>
                 </article>
 
             </section>
-            <!-- fim .menu-grid -->
-
         </main>
     </div>
-
 </template>
-
 <style scoped>
 /* ================================
    IMPORTAÇÃO DE FONTES
@@ -94,6 +105,19 @@ const mostrarSobremesas = computed(() => filtroAtivo.value === 'todos' || filtro
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
+}
+
+.item-price {
+    color: #ff9a00;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.item-vazio {
+    padding: 1rem 1.5rem;
+    color: #6a4a2a;
+    font-size: 0.85rem;
+    font-style: italic;
 }
 
 /* ================================
