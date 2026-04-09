@@ -9,6 +9,10 @@ const formData = reactive({
     id: 0
 })
 
+defineExpose({
+    formData
+})
+
 const modalVisivel = ref(false)
 
 const submitForm = () => {

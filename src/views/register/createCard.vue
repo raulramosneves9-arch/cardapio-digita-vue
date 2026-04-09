@@ -1,5 +1,11 @@
 <script setup>
-import { formData } from './itemForm.vue'
-import { itens } from '../list.vue'
+import { reactive, ref } from 'vue';
+import ItemForm from './itemForm.vue'
+
+const itemFormRef = ref(null)
 
 </script>
+
+<template>
+    <ItemForm ref="itemFormRef" />
+</template>
